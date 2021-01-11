@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>TwitchIntegration</AssemblyName>
+    <RootNamespace>TwitchIntegration</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="twitchbundle" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="twitchbundle" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Reference Include="0Harmony20">
+      <HintPath>..\..\MonSancAPI\MonSancAPI\MonSancAPI\References\0Harmony20.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\MonSancAPI\MonSancAPI\MonSancAPI\References\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>..\..\MonSancAPI\MonSancAPI\MonSancAPI\References\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Harmony">
+      <HintPath>..\..\MonSancAPI\MonSancAPI\MonSancAPI\References\BepInEx.Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Preloader">
+      <HintPath>..\..\MonSancAPI\MonSancAPI\MonSancAPI\References\BepInEx.Preloader.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_Assembly-CSharp">
+      <HintPath>..\..\MonSancAPI\MonSancAPI\MonSancAPI\References\MMHOOK_Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour">
+      <HintPath>..\..\MonSancAPI\MonSancAPI\MonSancAPI\References\MonoMod.RuntimeDetour.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Utils">
+      <HintPath>..\..\MonSancAPI\MonSancAPI\MonSancAPI\References\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\MonSancAPI\MonSancAPI\MonSancAPI\References\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\Monster Sanctuary\Monster Sanctuary_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\MonSancAPI\MonSancAPI\MonSancAPI\References\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(TargetPath)&quot; &quot;F:\SteamLibrary\steamapps\common\Monster Sanctuary\BepInEx\plugins\TwitchIntegration&quot; /Y" />
+  </Target>
+
+</Project>
